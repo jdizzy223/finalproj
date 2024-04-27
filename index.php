@@ -1,8 +1,16 @@
+<?php if (isset($_SESSION['username'])): ?>
+    <button class="nav-button" onclick="window.location.href='display_movies.php'">Profile</button>
+<?php else: ?>
+    <button class="nav-button" id="nb1">Sign Up/Log In</button>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Movie Recommendations</title>
+    <meta name="viewport" content= "width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css"> 
     <style>
     body, html {
         margin: 0;
@@ -45,20 +53,67 @@
         margin: 10% auto; /* Lower top margin on mobile */
         padding: 20px;
         border: 1px solid #888;
-        width: 90%; /* Full width but with some padding */
+        width: 50%; /* Full width but with some padding */
         box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soften the box shadow */
+        position: relative;
+        display: flex;
+        align-items: center; /* Center-aligns flex items horizontally */
+        justify-content: center; 
+        flex-direction: column;
+    }
+    
+    .modal-content img {
+    width: 100%; /* Adjust this percentage to scale the size */
+    max-width: 500px; /* Set a maximum width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    display: flex;
+    align-items: center; /* Center-aligns flex items horizontally */
+    justify-content: center; 
+
     }
 
+
     .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px; /* Make close button larger */
-    }
+    position: absolute; /* Absolute positioning within the relative parent */
+    top: 10px; /* 10px from the top of the modal content */
+    right: 10px; /* 10px from the right of the modal content */
+    color: #aaa;
+    cursor: pointer;
+    font-size: 28px; /* Adjust size as needed */
+}
+  
+   // .close {
+   // position: absolute; /* Positions the close button absolutely within the relative parent */
+   // right: 20px; /* 20px from the right edge */
+   // top: 20px; /* 20px from the top edge */
+   // color: #aaa;
+    // cursor: pointer;
+}
+
+   // .close {
+        //color: #aaa;
+       // float: right;
+       // font-size: 28px; /* Make close button larger */
+        
+  //  }
+
+  #saveMovie {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#saveMovie:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
 
     .close:hover,
     .close:focus {
         color: black;
         cursor: pointer;
+        text-decoration: none;
     }
 
     #recommendations div {
@@ -73,7 +128,66 @@
     }
 </style>
 </head>
+</head>
 <body>
+<body>
+<nav class="navbar">
+
+        <div class="navbar-container">
+
+            <a href="index.php" id="navbar-logo"> 
+                <img src="/images/hh.png"/> </a>
+
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="navbar-menu">
+
+                <li class="navbar-item">
+
+                    <button class="nav-button" id="nb1" > Sign Up/Log In </button>
+                    <ul id="menu1" class="popup-menu">
+                        <div class="popup-menu-container">
+                            <li class="navbar-link"> <a href="/artist.html"> Profile </a> </li>
+                            
+                        </div>
+                    </ul>
+
+                </li>
+
+                <li class="navbar-item">
+
+                    <button class="nav-button" id="nb2">Trending </button> 
+                    <ul id="menu2" class="popup-menu">
+                        <div class="popup-menu-container">
+                            <li class="navbar-link"> <a href="/index.html"> Movies </a> </li>
+                            <li class="navbar-link"> <a href="/sign.html">TV</a> </li>
+                        </div>
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+     
+    <div id="popup-nav-mobile">
+
+        <ul class="mobile-list">
+
+            <li class="mobile-link"> <a href="/artist.html"> Recommendations </a> </li>
+            <li class="mobile-link"> <a href="/catalog.html"> Trending Movies  </a> </li>
+            <li class="mobile-link"> <a href="/world.html"> Trending TV </a> </li>
+            <li class="mobile-link"> <a href="/index.html"> Profile </a> </li>
+
+
+        </ul>
+    </div>
+
     <form id="movieForm">
         <input type="text" id="movieName" placeholder="Enter Movie Name">
         <br></br>
@@ -89,10 +203,61 @@
             <h2 id="modalTitle"></h2>
             <p id="modalDescription"></p>
             <p id="modalScore"></p>
+            <button id="saveMovie"  onclick="saveMovieToDatabase()" style=" background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
         </div>
     </div>
 
+    
+
+    <div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="closeAuth">&times;</span>
+        <form id="authForm">
+            <h2>Sign Up / Log In</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
     <script>
+
+
+
+//
+//code for saving to the database 
+function saveMovieToDatabase() {
+    const movieTitle = document.getElementById('modalTitle').textContent;
+    const movieDescription = document.getElementById('modalDescription').textContent;
+    const moviePoster = document.getElementById('modalPoster').src;
+    const movieRating = document.getElementById('modalScore').textContent.split(" ")[1]; // Assuming the textContent is "Rating: X.Y"
+
+    console.log("Title: ", movieTitle);
+console.log("Description: ", movieDescription);
+console.log("Poster: ", moviePoster);
+console.log("Rating: ", movieRating);
+    
+    fetch('save_movie.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            title: movieTitle,
+            description: movieDescription,
+            poster: moviePoster,
+            rating: movieRating
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Movie saved!');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
 
 document.getElementById('movieForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -108,6 +273,8 @@ document.getElementById('movieForm').addEventListener('submit', function(event) 
         .catch(error => console.error('Fetch Error:', error));
 });
 
+
+//
 function displayRecommendations() {
     const container = document.getElementById('recommendations');
     const nextIndex = currentIndex + 5;
@@ -131,6 +298,15 @@ function updateShowMoreVisibility() {
 
 document.getElementById('showMore').addEventListener('click', displayRecommendations);
 
+// function openModal(movie) {
+//     const modal = document.getElementById('movieModal');
+//     document.getElementById('modalPoster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+//     document.getElementById('modalTitle').textContent = movie.title;
+//     document.getElementById('modalDescription').textContent = movie.overview;
+//     document.getElementById('modalScore').textContent = `Rating: ${movie.vote_average}`;
+//     modal.style.display = "block";
+// }
+
 function openModal(movie) {
     const modal = document.getElementById('movieModal');
     document.getElementById('modalPoster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -151,6 +327,117 @@ window.onclick = function(event) {
     }
 }
 
-    </script>
+const navButtons = document.getElementsByClassName('nav-button');
+const popupMenus = document.getElementsByClassName('popup-menu');
+const menu = document.querySelector('#mobile-menu');
+const mobileMenu = document.querySelector('#popup-nav-mobile');
+const mobileLinks = document.querySelector('.mobile-list');
+
+
+
+function animateWave1(wave, duration) {
+
+    function animate() {
+    
+        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
+            
+            wave.css('background-position-x', '1000px');
+            
+            animate();
+        });
+    }
+
+    animate();
+}
+
+function animateWave2(wave, duration) {
+
+    function animate() {
+
+        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
+            
+            wave.css('background-position-x', '0px');
+            
+            animate();
+        });
+    }
+
+    animate();
+}
+
+var on = false;
+
+mobileMenu.style.height = "0px";
+mobileMenu.style.padding = "0px";
+
+
+for (let i = 0; i < popupMenus.length; i++) {
+    popupMenus[i].style.display = "none";
+}
+
+
+
+menu.addEventListener("click", function() {
+    menu.classList.toggle("is-active");
+});
+
+menu.addEventListener("click", toggleMobileMenu);
+
+for (let i = 0; i < navButtons.length; i++) {
+    navButtons[i].addEventListener("mouseenter", revealMenu);
+    popupMenus[i].addEventListener("mouseleave", hideMenu);
+}
+
+for (let i = 0; i < popupMenus.length; i++) {
+    popupMenus[i].addEventListener("mouseenter", changeBackground);
+    popupMenus[i].addEventListener("mouseleave", resetBackgroundPm);
+    navButtons[i].addEventListener("mouseleave", resetBackground);
+}
+
+
+function toggleMobileMenu()  {
+    on = !on;
+    mobileMenu.style.height = on ? "350px" : "0px";
+    mobileMenu.style.padding = on ? "80px, 0px" : "0px";
+}
+
+
+
+function revealMenu(event) {
+    const buttonId = event.target.id.slice(event.target.id.indexOf("b")+1);
+    const popupMenu = document.getElementById("menu" + buttonId);
+    popupMenu.style.display = "block";
+}
+
+function hideMenu(event) {
+    const popupMenuid = event.target.id;
+    const popupMenu = document.getElementById(popupMenuid);
+    popupMenu.style.display = "none";
+}
+
+
+function changeBackground(event) {
+    const btnidnum = event.target.id.slice(event.target.id.indexOf("u")+1);
+    const navButton = document.getElementById("nb" + btnidnum);
+    navButton.style.backgroundColor = "#969E7D";
+    navButton.style.borderColor = "#969E7D";
+}
+
+function resetBackgroundPm(event) {
+    const btnidnum = event.target.id.slice(event.target.id.indexOf("u")+1);
+    const navButton = document.getElementById("nb" + btnidnum);
+    navButton.style.backgroundColor = "";
+    navButton.style.borderColor = "";
+}
+
+function resetBackground(event) {
+    const btnid = event.target.id;
+    const navButton = document.getElementById(btnid);
+    navButton.style.backgroundColor = "";
+    navButton.style.borderColor = "";
+}
+    
+
+</script>
 </body>
 </html>
