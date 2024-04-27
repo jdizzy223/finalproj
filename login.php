@@ -1,5 +1,7 @@
 <?php
 session_start();
+include 'db_connect.php'; // Include the database connection
+
 
 if (isset($_POST['submit'])) {
     // Connection settings
@@ -10,8 +12,8 @@ if (isset($_POST['submit'])) {
 
     try {
         // Establishing the database connection
-        $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //$db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Fetch user from the database
         $stmt = $db->prepare("SELECT * FROM Users WHERE Username = ?");
