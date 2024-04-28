@@ -51,9 +51,8 @@ try {
     $stmt = $db->prepare("INSERT INTO UserMovies (UserID, MovieID) VALUES (?, ?)");
     $stmt->execute([$userID, $movieID]);
 
-    echo json_encode(['status' => 'success', 'message' => 'Movie saved successfully']);
+  echo json_encode(['status' => 'success', 'message' => 'Movie saved successfully']);
 } catch (PDOException $e) {
     echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>
-

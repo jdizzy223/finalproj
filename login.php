@@ -1,7 +1,5 @@
 <?php
 session_start();
-include 'db_connect.php'; // Include the database connection
-
 
 if (isset($_POST['submit'])) {
     // Connection settings
@@ -12,8 +10,8 @@ if (isset($_POST['submit'])) {
 
     try {
         // Establishing the database connection
-        //$db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Fetch user from the database
         $stmt = $db->prepare("SELECT * FROM Users WHERE Username = ?");
@@ -25,7 +23,7 @@ if (isset($_POST['submit'])) {
                 // Correct password, login successful
                 $_SESSION['username'] = $user['Username'];
                 $_SESSION['userID'] = $user['UserID']; // Store user ID in session for later use
-                header("Location: display_movies.php");
+                header("Location: profile.php");
                 exit;
             } else {
                 // Wrong password
@@ -41,7 +39,7 @@ if (isset($_POST['submit'])) {
             $newUserID = $db->lastInsertId(); // Get the new user ID
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['userID'] = $newUserID;
-            header("Location: display_movies.php");
+            header("Location: profile.php");
             exit;
         }
     } catch (PDOException $e) {
