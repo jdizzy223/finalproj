@@ -361,35 +361,6 @@ const mobileLinks = document.querySelector('.mobile-list');
 
 
 
-function animateWave1(wave, duration) {
-
-    function animate() {
-    
-        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '1000px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
-
-function animateWave2(wave, duration) {
-
-    function animate() {
-
-        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '0px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
 
 var on = false;
 
