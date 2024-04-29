@@ -43,7 +43,7 @@
     }
 
     .modal-content {
-        background-color: #fefefe;
+        background-color: #3e3e3e;
         margin: 10% auto; /* Lower top margin on mobile */
         padding: 20px;
         border: 1px solid #888;
@@ -54,6 +54,7 @@
         align-items: center; /* Center-aligns flex items horizontally */
         justify-content: center; 
         flex-direction: column;
+        color: #ffffff;
     }
     
     .modal-content img {
@@ -66,6 +67,10 @@
 
     }
 
+    #modalPoster{
+       max-height: 50%;
+       max-width: 50%;
+    }
 
     .close {
     position: absolute; /* Absolute positioning within the relative parent */
@@ -78,7 +83,7 @@
   
 
   #saveMovie {
-    background-color: #007bff; /* Bootstrap primary blue */
+    background-color: #ef4e4e; /* Bootstrap primary blue */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -86,7 +91,7 @@
     cursor: pointer;
 }
 #saveMovie:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #ef6868; /* Darker blue on hover */
 }
 
     .close:hover,
@@ -273,7 +278,7 @@
             <h2 id="modalTitle">Rebel Moon — Part One: A Child of Fire</h2>
             <p id="modalDescription">When the ruthless forces of the Motherworld threaten a quiet farming village on a distant moon, a mysterious outsider becomes its best hope for survival.</p>
             <p id="modalScore">Rating: 6.372</p>
-            <button id="saveMovie" onclick="saveMovieToDatabase()" style=" background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
+            <button id="saveMovie" onclick="saveMovieToDatabase()">Save Movie</button>
         </div>
     </div>
 
@@ -367,35 +372,8 @@ function displayMovies(movies) {
         container.appendChild(div);
     });
 }
-function animateWave1(wave, duration) {
 
-    function animate() {
-    
-        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '1000px');
-            
-            animate();
-        });
-    }
 
-    animate();
-}
-
-function animateWave2(wave, duration) {
-
-    function animate() {
-
-        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '0px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
 const navButtons = document.getElementsByClassName('nav-button');
 const popupMenus = document.getElementsByClassName('popup-menu');
 const menu = document.querySelector('#mobile-menu');
