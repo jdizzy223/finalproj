@@ -184,7 +184,7 @@
             <h2 id="modalTitle"></h2>
             <p id="modalDescription"></p>
             <p id="modalScore"></p>
-            <button id="saveMovie"  onclick="saveMovieToDatabase()" style=" background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
+            <button id="saveMovie"  onclick="saveMovieToDatabase()">Save Movie</button>
         </div>
     </div>
 
