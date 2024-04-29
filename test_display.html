@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trending Movies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif; /* Ensures text is legible */
+    }
+
+    /* Basic styling for the form */
+    form#movieForm {
+        padding: 20px;
+        text-align: center; /* Center align form elements */
+    }
+
+    input[type="text"] {
+        width: 80%; /* Responsive width */
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px; /* Larger font size for better readability */
+    }
+
+    .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto; /* Lower top margin on mobile */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; /* Full width but with some padding */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soften the box shadow */
+        position: relative;
+        display: flex;
+        align-items: center; /* Center-aligns flex items horizontally */
+        justify-content: center; 
+        flex-direction: column;
+    }
+    
+    .modal-content img {
+    width: 100%; /* Adjust this percentage to scale the size */
+    max-width: auto; /* Set a maximum width for larger screens */
+    height: 100px; /* Maintain aspect ratio */
+    display: flex;
+    align-items: center; /* Center-aligns flex items horizontally */
+    justify-content: center; 
+
+    }
+
+
+    .close {
+    position: absolute; /* Absolute positioning within the relative parent */
+    top: 10px; /* 10px from the top of the modal content */
+    right: 10px; /* 10px from the right of the modal content */
+    color: #aaa;
+    cursor: pointer;
+    font-size: 28px; /* Adjust size as needed */
+}
+  
+
+  #saveMovie {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#saveMovie:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+  
+
+    img {
+        max-width: 100%; /* Ensure images are not larger than their container */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+
+@media (max-width: 768px) {
+    #recommendations {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #recommendations {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+}
+        /* Include previous styles here */
+        #recommendations {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .movie-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .movie-item:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+        }
+        .movie-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+        }
+        .movie-item h3 {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+
+        <div class="navbar-container">
+
+            <a href="index.php" id="navbar-logo"> 
+                <img src="/images/hh.png"/> </a>
+
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="navbar-menu">
+
+                <li class="navbar-item">
+
+                    <button class="nav-button" id="nb1" > Sign Up/Log In </button>
+                    <ul id="menu1" class="popup-menu">
+                        <div class="popup-menu-container">
+                            <li class="navbar-link"> <a href="/final/display_movies.php"> Profile </a> </li>
+                            
+                        </div>
+                    </ul>
+
+                </li>
+
+                <li class="navbar-item">
+
+                    <button class="nav-button" id="nb2">Trending </button> 
+                    <ul id="menu2" class="popup-menu">
+                        <div class="popup-menu-container">
+                            <li class="navbar-link"> <a href="/final/trending.php"> Movies </a> </li>
+                            <li class="navbar-link"> <a href="/final/trending.php">TV</a> </li>
+                        </div>
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+     
+    <div id="popup-nav-mobile">
+
+        <ul class="mobile-list">
+
+            <li class="mobile-link"> <a href="/index.php"> Recommendations </a> </li>
+            <li class="mobile-link"> <a href="/trending.php"> Trending Movies  </a> </li>
+            <li class="mobile-link"> <a href="/trending.php"> Trending TV </a> </li>
+            <li class="mobile-link"> <a href="/display_movies.php"> Profile </a> </li>
+
+
+        </ul>
+    </div>
+</div>    
+    
+    <div id="recommendations"></div>
+    <div id="recommendations"><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two">
+        <h3>Dune: Part Two (8.263)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/cxevDYdeFkiixRShbObdwAHBZry.jpg" alt="Rebel Moon — Part Two: The Scargiver">
+        <h3>Rebel Moon — Part Two: The Scargiver (6.133)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/4lhR4L2vzzjl68P1zJyCH755Oz4.jpg" alt="Monkey Man">
+        <h3>Monkey Man (7.338)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg" alt="Dune">
+        <h3>Dune (7.79)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/sh7Rg8Er3tFcN9BpKIPOMvALgZd.jpg" alt="Civil War">
+        <h3>Civil War (7.4)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg" alt="Kung Fu Panda 4">
+        <h3>Kung Fu Panda 4 (7.163)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/H6vke7zGiuLsz4v4RPeReb9rsv.jpg" alt="Challengers">
+        <h3>Challengers (7.4)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/6faYaQyiBPhqAizldJKq21mIVaE.jpg" alt="Ghostbusters: Frozen Empire">
+        <h3>Ghostbusters: Frozen Empire (6.409)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/pQYHouPsDw32FhDLr7E3jmw0WTk.jpg" alt="Exhuma">
+        <h3>Exhuma (7.8)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/A7EByudX0eOzlkQ2FIbogzyazm2.jpg" alt="The Beekeeper">
+        <h3>The Beekeeper (7.461)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/gxVcBc4VM0kAg9wX4HVg6KJHG46.jpg" alt="Arthur the King">
+        <h3>Arthur the King (6.833)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/fdZpvODTX5wwkD0ikZNaClE4AoW.jpg" alt="Immaculate">
+        <h3>Immaculate (6.231)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/u3YQJctMzFN2wAvnkmXy41bXhFv.jpg" alt="Late Night with the Devil">
+        <h3>Late Night with the Devil (7.327)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/p7jyFWiLyHPttqYBFAlLJwtYTYH.jpg" alt="Love Lies Bleeding">
+        <h3>Love Lies Bleeding (7.159)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/bQ2ywkchIiaKLSEaMrcT6e29f91.jpg" alt="Godzilla x Kong: The New Empire">
+        <h3>Godzilla x Kong: The New Empire (6.644)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/rtosxP5sXuoRFPH4sVbMccLIPiV.jpg" alt="The Three Musketeers: Milady">
+        <h3>The Three Musketeers: Milady (6.532)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/ui4DrH1cKk2vkHshcUcGt2lKxCm.jpg" alt="Rebel Moon — Part One: A Child of Fire">
+        <h3>Rebel Moon — Part One: A Child of Fire (6.372)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/g8ak4QAGLZpqMs3CpnFHWWfIzJQ.jpg" alt="Justice League: Crisis on Infinite Earths Part Two">
+        <h3>Justice League: Crisis on Infinite Earths Part Two (6.091)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/5Uq8P6MPj9Ppsns5t82AiCiUaWE.jpg" alt="Abigail">
+        <h3>Abigail (6.8)</h3>
+    </div><div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500/ajnzOECvXpa7VcVx0RSlq39XgHe.jpg" alt="Deadpool &amp; Wolverine">
+        <h3>Deadpool &amp; Wolverine (0)</h3>
+    </div></div>
+    
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalPoster" src="" alt="Movie Poster" style="width:100%; height:20%;">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <p id="modalScore"></p>
+            <button id="saveMovie"  onclick="saveMovieToDatabase()" style=" background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
+        </div>
+    </div>
+
+    <script>
+
+    var on = false;
+//code for saving to the database 
+function saveMovieToDatabase() {
+    const movieTitle = document.getElementById('modalTitle').textContent;
+    const movieDescription = document.getElementById('modalDescription').textContent;
+    const moviePoster = document.getElementById('modalPoster').src;
+    const movieRating = document.getElementById('modalScore').textContent.split(" ")[1]; // Assuming the textContent is "Rating: X.Y"
+
+    console.log("Title: ", movieTitle);
+    console.log("Description: ", movieDescription);
+    console.log("Poster: ", moviePoster);
+    console.log("Rating: ", movieRating);
+    
+    fetch('save_movie.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            title: movieTitle,
+            description: movieDescription,
+            poster: moviePoster,
+            rating: movieRating
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Movie saved!');
+        } else if (data.status === 'error') {
+            alert(data.message); // Display the error message from PHP
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+
+
+
+
+function openModal(movie) {
+    const modal = document.getElementById('movieModal');
+    if (!modal) {
+        console.error('Modal element not found');
+        return;
+    }
+    document.getElementById('modalPoster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    document.getElementById('modalTitle').textContent = movie.title;
+    document.getElementById('modalDescription').textContent = movie.overview;
+    document.getElementById('modalScore').textContent = `Rating: ${movie.vote_average}`;
+    modal.style.display = "block";
+}
+
+
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('movieModal').style.display = "none";
+});
+
+window.onclick = function(event) {
+    const modal = document.getElementById('movieModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+
+}
+
+window.onload = function() {
+            fetch('trending.php')
+            .then(response => response.json())
+            .then(data => displayMovies(data.results))
+            .catch(error => console.error('Error loading trending movies:', error));
+};
+
+function displayMovies(movies) {
+    const container = document.getElementById('recommendations');
+    movies.forEach(movie => {
+        const div = document.createElement('div');
+        div.className = 'movie-item';
+        div.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+            <h3>${movie.title} (${movie.vote_average})</h3>
+        `;
+        div.addEventListener('click', () => openModal(movie));  // Make sure this line is working
+        container.appendChild(div);
+    });
+}
+function animateWave1(wave, duration) {
+
+    function animate() {
+    
+        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
+            
+            wave.css('background-position-x', '1000px');
+            
+            animate();
+        });
+    }
+
+    animate();
+}
+
+function animateWave2(wave, duration) {
+
+    function animate() {
+
+        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
+            
+            wave.css('background-position-x', '0px');
+            
+            animate();
+        });
+    }
+
+    animate();
+}
+const navButtons = document.getElementsByClassName('nav-button');
+const popupMenus = document.getElementsByClassName('popup-menu');
+const menu = document.querySelector('#mobile-menu');
+const mobileMenu = document.querySelector('#popup-nav-mobile');
+const mobileLinks = document.querySelector('.mobile-list');
+
+
+
+mobileMenu.style.height = "0px";
+mobileMenu.style.padding = "0px";
+
+
+for (let i = 0; i < popupMenus.length; i++) {
+    popupMenus[i].style.display = "none";
+}
+
+
+
+menu.addEventListener("click", function() {
+    menu.classList.toggle("is-active");
+});
+
+menu.addEventListener("click", toggleMobileMenu);
+
+for (let i = 0; i < navButtons.length; i++) {
+    navButtons[i].addEventListener("mouseenter", revealMenu);
+    popupMenus[i].addEventListener("mouseleave", hideMenu);
+}
+
+for (let i = 0; i < popupMenus.length; i++) {
+    popupMenus[i].addEventListener("mouseenter", changeBackground);
+    popupMenus[i].addEventListener("mouseleave", resetBackgroundPm);
+    navButtons[i].addEventListener("mouseleave", resetBackground);
+}
+
+
+function toggleMobileMenu()  {
+    on = !on;
+    mobileMenu.style.height = on ? "350px" : "0px";
+    mobileMenu.style.padding = on ? "80px, 0px" : "0px";
+}
+
+
+
+function revealMenu(event) {
+    const buttonId = event.target.id.slice(event.target.id.indexOf("b")+1);
+    const popupMenu = document.getElementById("menu" + buttonId);
+    popupMenu.style.display = "block";
+}
+
+function hideMenu(event) {
+    const popupMenuid = event.target.id;
+    const popupMenu = document.getElementById(popupMenuid);
+    popupMenu.style.display = "none";
+}
+
+
+function changeBackground(event) {
+    const btnidnum = event.target.id.slice(event.target.id.indexOf("u")+1);
+    const navButton = document.getElementById("nb" + btnidnum);
+    navButton.style.backgroundColor = "#969E7D";
+    navButton.style.borderColor = "#969E7D";
+}
+
+function resetBackgroundPm(event) {
+    const btnidnum = event.target.id.slice(event.target.id.indexOf("u")+1);
+    const navButton = document.getElementById("nb" + btnidnum);
+    navButton.style.backgroundColor = "";
+    navButton.style.borderColor = "";
+}
+
+function resetBackground(event) {
+    const btnid = event.target.id;
+    const navButton = document.getElementById(btnid);
+    navButton.style.backgroundColor = "";
+    navButton.style.borderColor = "";
+}
+    
+
+    </script>
+</body>
+</html>
