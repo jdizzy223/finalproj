@@ -131,7 +131,7 @@ form button {
                     <button class="nav-button" id="nb1" > Sign Up/Log In </button>
                     <ul id="menu1" class="popup-menu">
                         <div class="popup-menu-container">
-                            <li class="navbar-link"> <a href="/final/display_movies.php"> Profile </a> </li> 
+                            <li class="navbar-link"> <a href="/final/profile.php"> Profile </a> </li> 
                         </div>
                     </ul>
                 </li>
@@ -140,8 +140,8 @@ form button {
                     <button class="nav-button" id="nb2">Trending </button> 
                     <ul id="menu2" class="popup-menu">
                         <div class="popup-menu-container">
-                            <li class="navbar-link"> <a href="/final/trending.php"> Movies </a> </li>
-                            <li class="navbar-link"> <a href="/final//trending.php">TV</a> </li>
+                            <li class="navbar-link"> <a href="/final/display_trending.php"> Movies </a> </li>
+                            <li class="navbar-link"> <a href="/final/display_trendingtv.php">TV</a> </li>
                         </div>
                     </ul>
                 </li>
@@ -162,6 +162,6 @@ form button {
         <?php endif; ?>
     </div>
 
-
+    
 </body>
 </html>
