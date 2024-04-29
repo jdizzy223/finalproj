@@ -201,10 +201,10 @@
 
         <ul class="mobile-list">
 
-            <li class="mobile-link"> <a href="/index.php"> Recommendations </a> </li>
-            <li class="mobile-link"> <a href="/trending.php"> Trending Movies  </a> </li>
-            <li class="mobile-link"> <a href="/trending.php"> Trending TV </a> </li>
-            <li class="mobile-link"> <a href="/profile.php"> Profile </a> </li>
+            <li class="mobile-link"> <a href="/final/index.php"> Recommendations </a> </li>
+            <li class="mobile-link"> <a href="/final/trending.php"> Trending Movies  </a> </li>
+            <li class="mobile-link"> <a href="/final/trending.php"> Trending TV </a> </li>
+            <li class="mobile-link"> <a href="/final/profile.php"> Profile </a> </li>
 
 
         </ul>
@@ -232,16 +232,16 @@
     
 
     <div id="authModal" class="modal">
-    <div class="modal-content">
-        <span class="closeAuth">&times;</span>
-        <form id="authForm">
-            <h2>Sign Up / Log In</h2>
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="modal-content">
+            <span class="closeAuth">&times;</span>
+            <form id="authForm">
+                <h2>Sign Up / Log In</h2>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <script>
 
@@ -353,48 +353,14 @@ const mobileMenu = document.querySelector('#popup-nav-mobile');
 const mobileLinks = document.querySelector('.mobile-list');
 
 
-
-function animateWave1(wave, duration) {
-
-    function animate() {
-    
-        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '1000px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
-
-function animateWave2(wave, duration) {
-
-    function animate() {
-
-        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '0px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
-
 var on = false;
 
 mobileMenu.style.height = "0px";
 mobileMenu.style.padding = "0px";
 
-
 for (let i = 0; i < popupMenus.length; i++) {
     popupMenus[i].style.display = "none";
 }
-
-
 
 menu.addEventListener("click", function() {
     menu.classList.toggle("is-active");
@@ -413,14 +379,11 @@ for (let i = 0; i < popupMenus.length; i++) {
     navButtons[i].addEventListener("mouseleave", resetBackground);
 }
 
-
 function toggleMobileMenu()  {
     on = !on;
     mobileMenu.style.height = on ? "350px" : "0px";
     mobileMenu.style.padding = on ? "80px, 0px" : "0px";
 }
-
-
 
 function revealMenu(event) {
     const buttonId = event.target.id.slice(event.target.id.indexOf("b")+1);
@@ -433,7 +396,6 @@ function hideMenu(event) {
     const popupMenu = document.getElementById(popupMenuid);
     popupMenu.style.display = "none";
 }
-
 
 function changeBackground(event) {
     const btnidnum = event.target.id.slice(event.target.id.indexOf("u")+1);
@@ -456,7 +418,6 @@ function resetBackground(event) {
     navButton.style.borderColor = "";
 }
     
-
 </script>
 </body>
 </html>
