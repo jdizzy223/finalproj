@@ -76,6 +76,13 @@
     font-size: 28px; /* Adjust size as needed */
 }
   
+    #movieName {
+        width: 500px; /* Adjust the width as needed */
+        padding: 10px; /* Optional: Add padding for better visual */
+        height: 60px;
+        font-size: 24px;
+    }
+
 
   #saveMovie {
     background-color: #007bff; /* Bootstrap primary blue */
@@ -127,25 +134,34 @@
             padding: 20px;
         }
         .movie-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* vertically center */
+            align-items: center; /* horizontally center */
             border: 1px solid #ccc;
             padding: 10px;
             border-radius: 5px;
             transition: transform 0.3s ease-in-out;
         }
+
         .movie-item:hover {
             transform: scale(1.05);
             cursor: pointer;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .movie-item img {
             width: 100%;
             height: auto;
             border-bottom: 1px solid #ccc;
         }
+
         .movie-item h3 {
             margin-top: 10px;
             text-align: center;
         }
+
+
 
 
 </style>
