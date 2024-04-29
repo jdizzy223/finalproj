@@ -187,8 +187,8 @@ footer {
     align-items: center;
     width: 100%;
     background-color: #ef4e4e;
-    height: 100px;
-    padding: 20px 50px;
+    height: 150px;
+  /* padding: 20px 50px; */
     flex-direction: column;
 
 }
