@@ -115,6 +115,65 @@ form button {
     }
 }
 
+
+
+ul.social-links, ul.menu {
+    list-style: none; /* Removes bullet points from list items */
+    padding: 0; /* Removes padding */
+    margin: 10px 0; /* Adds vertical spacing */
+    display: flex; /* Displays list items in a row */
+    justify-content: center; /* Centers list items horizontally */
+    align-items: center; /* Centers list items vertically */
+}
+
+ul.social-links li, ul.menu li {
+    margin: 0 10px; /* Spacing between list items */
+}
+
+ul.social-links a, ul.menu a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Removes underline from links */
+}
+
+ul.social-links a:hover, ul.menu a:hover {
+    text-decoration: underline; /* Underlines links on hover */
+}
+
+@media (max-width: 600px) {
+    ul.social-links, ul.menu {
+        flex-direction: column; /* Stacks list items vertically on small screens */
+    }
+}
+
+html, body {
+    height: 100%; /* Ensure the full height of the viewport is used */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+body {
+    display: flex; /* Use flexbox to structure the main layout */
+    flex-direction: column; /* Stack child elements vertically */
+    min-height: 100vh; /* Minimum height is full viewport height */
+}
+
+.content { /* Assuming you have a main content div, if not, you can apply this to another container */
+    flex: 1; /* Allows this element to grow and fill available space, pushing the footer down */
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    width: 100%;
+    background-color: #ef4e4e; /* Dark background for the footer */
+    color: white; /* White text color */
+    text-align: center;
+    padding: 20px 10px; /* Padding around the footer content */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    position: relative; /* Position relative to adjust easily if needed */
+    margin-top: auto; /* Pushes the footer to the bottom if there is extra space */
+}
+
     </style>
 </head>
 <body>
@@ -163,5 +222,38 @@ form button {
     </div>
 
 
+    <footer>
+        <ul class="social-links">
+            <li>
+                <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+                <a href="/index.html"> <img src="https://justind.sgedu.site/final/images/logo.webp" id="img-link"></a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </li>
+        </ul>
+    
+        <ul class="menu">
+            <li>
+                <a href="/index.php">Recommendations</a>
+                <a href="/display_trending.php">Trending Movies</a>
+                <a href="/display_trendingtv.php">Trending TV</a>
+                <a href="/profile.php">Profile</a>
+            </li>
+        </ul>
+    </footer>
+    
+
 </body>
+
+
+
 </html>
