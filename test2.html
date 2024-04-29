@@ -1,4 +1,4 @@
-<!-- most recent as of 11:46pm -->
+<!-- most recent as of 2;54 am -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,8 @@
     }
 
     .modal-content {
-        background-color: #fefefe;
+        color: #ffffff;
+        background-color: #3e3e3e;
         margin: 10% auto; /* Lower top margin on mobile */
         padding: 20px;
         border: 1px solid #888;
@@ -58,10 +59,15 @@
         flex-direction: column;
     }
     
+    #modalPoster{
+       max-height: 50%;
+       max-width: 50%;
+    }
+
     .modal-content img {
-    width: 100%; /* Adjust this percentage to scale the size */
+    width: 50px; /* Adjust this percentage to scale the size */
     max-width: auto; /* Set a maximum width for larger screens */
-    height: 100px; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
     display: flex;
     align-items: center; /* Center-aligns flex items horizontally */
     justify-content: center; 
@@ -148,6 +154,7 @@
             padding: 10px;
             border-radius: 5px;
             transition: transform 0.3s ease-in-out;
+            color: #ffffff;
         }
 
         .movie-item:hover {
@@ -166,6 +173,8 @@
             margin-top: 10px;
             text-align: center;
         }
+
+
 
 
 </style>
@@ -248,10 +257,23 @@
     
     </div>
     <button id="showMore" style="display:block;">Show More</button>
+    <br>
+    
+    <div id="movieModal" class="modal" style="display: block;">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <img id="modalPoster" src="https://image.tmdb.org/t/p/w500/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg" alt="Movie Poster" style="width:100%; height:20%;">
+            <h2 id="modalTitle">Guardians of the Galaxy</h2>
+            <p id="modalDescription">Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.</p>
+            <p id="modalScore">Rating: 7.908</p>
+            <br>
+            <button id="saveMovie" onclick="saveMovieToDatabase()" style=" background-color: #ef4e4e; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
+        </div>
+    </div>
 
     
 
-    <div id="movieModal" class="modal">
+    <!-- <div id="movieModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <img id="modalPoster" src="" alt="Movie Poster" style="width:100%; height:20%;">
@@ -260,7 +282,7 @@
             <p id="modalScore"></p>
             <button id="saveMovie"  onclick="saveMovieToDatabase()" style=" background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
         </div>
-    </div>
+    </div> -->
 
     
 
@@ -327,7 +349,10 @@
          </li>
     </ul>
     
-    
+    <!-- <li class="mobile-link"> <a href="/index.php"> Recommendations </a> </li>
+            <li class="mobile-link"> <a href="/trending.php"> Trending Movies  </a> </li>
+            <li class="mobile-link"> <a href="/trending.php"> Trending TV </a> </li>
+            <li class="mobile-link"> <a href="/profile.php"> Profile </a> </li> -->
  </footer>
 
  
