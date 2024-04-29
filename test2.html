@@ -8,11 +8,12 @@
     <meta name="viewport" content= "width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css"> 
     <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif; /* Ensures text is legible */
-    }
+   
+    body {
+    min-height: 100vh; /* Minimum height to fill the viewport */
+    display: flex;
+    flex-direction: column;
+}
 
     /* Basic styling for the form */
     form#movieForm {
@@ -115,11 +116,6 @@
         text-decoration: none;
     }
 
-    /* #recommendations div {
-        margin: 5px;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-    } */
 
     img {
         max-width: 100%; /* Ensure images are not larger than their container */
@@ -138,7 +134,7 @@
         grid-template-columns: 1fr; /* Single column on very small screens */
     }
 }
-        /* Include previous styles here */
+        
         #recommendations {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -158,11 +154,6 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* .movie-item img {
-            width: 100%;
-            height: auto;
-            border-bottom: 1px solid #ccc;
-        } */
         .movie-item img {
             width: 100%;
             height: auto;
@@ -251,31 +242,13 @@
 
    
     <div id="recommendations">
-        <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
-    <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
-    <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
-    <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
-    <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
-    
     </div>
     <button id="showMore" style="display:block;">Show More</button>
     <br>
     
-    <div id="movieModal" class="modal" style="display: block;">
-        <div class="modal-content">
-            <span class="close">×</span>
-            <img id="modalPoster" src="https://image.tmdb.org/t/p/w500/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg" alt="Movie Poster" style="width:100%; height:20%;">
-            <h2 id="modalTitle">Guardians of the Galaxy</h2>
-            <p id="modalDescription">Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.</p>
-            <p id="modalScore">Rating: 7.908</p>
-            <br>
-            <button id="saveMovie" onclick="saveMovieToDatabase()" style=" background-color: #ef4e4e; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
-        </div>
-    </div>
-
     
 
-    <!-- <div id="movieModal" class="modal">
+    <div id="movieModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <img id="modalPoster" src="" alt="Movie Poster" style="width:100%; height:20%;">
@@ -284,7 +257,7 @@
             <p id="modalScore"></p>
             <button id="saveMovie"  onclick="saveMovieToDatabase()" style=" background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Save Movie</button>
         </div>
-    </div> -->
+    </div>
 
     
 
@@ -300,26 +273,6 @@
     </div>
 </div>
 
-
-<!-- <footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>About Us</h4>
-        </div>
-        <div class="footer-section">
-            <h4>Contact Information</h4>
-            <p>Email: info@example.com</p>
-            <p>Phone: +123 456 7890</p>
-        </div>
-        <div class="footer-section">
-            <h4>Follow Us</h4>
-            <a href="#">Twitter</a> | <a href="#">Facebook</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2024 MovieSite | Designed by YourName
-    </div>
-</footer> -->
 
 
 <footer>
@@ -351,10 +304,7 @@
          </li>
     </ul>
     
-    <!-- <li class="mobile-link"> <a href="/index.php"> Recommendations </a> </li>
-            <li class="mobile-link"> <a href="/trending.php"> Trending Movies  </a> </li>
-            <li class="mobile-link"> <a href="/trending.php"> Trending TV </a> </li>
-            <li class="mobile-link"> <a href="/profile.php"> Profile </a> </li> -->
+   
  </footer>
 
  
