@@ -204,7 +204,7 @@
             <li class="mobile-link"> <a href="/index.php"> Recommendations </a> </li>
             <li class="mobile-link"> <a href="/trending.php"> Trending Movies  </a> </li>
             <li class="mobile-link"> <a href="/trending.php"> Trending TV </a> </li>
-            <li class="mobile-link"> <a href="/display_movies.php"> Profile </a> </li>
+            <li class="mobile-link"> <a href="/profile.php"> Profile </a> </li>
 
 
         </ul>
