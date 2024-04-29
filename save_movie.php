@@ -14,7 +14,7 @@ $title = $data['title'];
 $description = $data['description'];
 $poster = $data['poster'];
 $rating = $data['rating'];
-$userID = $_SESSION['userID']; // User ID from session
+$userID = $_SESSION['userID'];
 
 try {
     // Check if the movie already exists in the database

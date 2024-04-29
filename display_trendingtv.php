@@ -77,17 +77,17 @@
 }
   
 
-  #saveMovie {
-    background-color: #007bff; 
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-#saveMovie:hover {
-    background-color: #0056b3; 
-}
+        #saveMovie {
+            background-color: #ef4e4e; 
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #saveMovie:hover {
+            background-color: #ef6868; 
+        }
 
     .close:hover,
     .close:focus {
