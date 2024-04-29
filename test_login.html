@@ -1,3 +1,56 @@
+<?php
+session_start();
+
+$errorMessage = ''; // Initialize error message variable
+
+if (isset($_POST['submit'])) {
+    // Connection settings
+    $host = 'localhost'; // Adjust as necessary
+    $dbname = 'db3s875grjp4uu'; // Your database name
+    $username = 'uhnaasmnqb94o'; // Your database username
+    $password = 'Jad20032813'; // Your database password
+
+    try {
+        // Establishing the database connection
+        $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Fetch user from the database
+        $stmt = $db->prepare("SELECT * FROM Users WHERE Username = ?");
+        $stmt->execute([$_POST['username']]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            if (password_verify($_POST['password'], $user['Password'])) {
+                // Correct password, login successful
+                $_SESSION['username'] = $user['Username'];
+                $_SESSION['userID'] = $user['UserID']; // Store user ID in session for later use
+                header("Location: profile.php");
+                exit;
+            } else {
+                // Wrong password
+                $errorMessage = 'Invalid username or password!';
+            }
+        } else {
+            // No user found, create new user
+            $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $stmt = $db->prepare("INSERT INTO Users (Username, Password) VALUES (?, ?)");
+            $stmt->execute([$_POST['username'], $hash]);
+            // Login the new user
+            $newUserID = $db->lastInsertId(); // Get the new user ID
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['userID'] = $newUserID;
+            header("Location: profile.php");
+            exit;
+        }
+
+    } catch (PDOException $e) {
+        // Handle SQL errors or missing database connection
+        die("Database error: " . $e->getMessage());
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,6 +157,11 @@ form button {
             <input type="password" id="password" name="password" required>
             <button type="submit" name="submit">Login / Register</button>
         </form>
+        <?php if ($errorMessage): ?>
+            <p id="error-message" style="color: red;"><?= $errorMessage ?></p>
+        <?php endif; ?>
     </div>
+
+
 </body>
 </html>
