@@ -9,17 +9,17 @@
         body, html {
         margin: 0;
         padding: 0;
-        font-family: Arial, sans-serif; /* Ensures text is legible */
+        font-family: Arial, sans-serif;
     }
 
-    /* Basic styling for the form */
+   
     form#movieForm {
         padding: 20px;
-        text-align: center; /* Center align form elements */
+        text-align: center; 
     }
 
     input[type="text"] {
-        width: 80%; /* Responsive width */
+        width: 80%; 
         padding: 10px;
         margin: 10px 0;
         border: 1px solid #ccc;
@@ -27,7 +27,7 @@
 
     button {
         padding: 10px 20px;
-        font-size: 16px; /* Larger font size for better readability */
+        font-size: 16px; 
     }
 
     .modal {
@@ -44,41 +44,41 @@
 
     .modal-content {
         background-color: #fefefe;
-        margin: 10% auto; /* Lower top margin on mobile */
+        margin: 10% auto; 
         padding: 20px;
         border: 1px solid #888;
-        width: 50%; /* Full width but with some padding */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soften the box shadow */
+        width: 50%; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
         position: relative;
         display: flex;
-        align-items: center; /* Center-aligns flex items horizontally */
+        align-items: center; 
         justify-content: center; 
         flex-direction: column;
     }
     
     .modal-content img {
-    width: 100%; /* Adjust this percentage to scale the size */
-    max-width: auto; /* Set a maximum width for larger screens */
-    height: 100px; /* Maintain aspect ratio */
+    width: 100%; 
+    max-width: auto; 
+    height: 100px; 
     display: flex;
-    align-items: center; /* Center-aligns flex items horizontally */
+    align-items: center; 
     justify-content: center; 
 
     }
 
 
     .close {
-    position: absolute; /* Absolute positioning within the relative parent */
-    top: 10px; /* 10px from the top of the modal content */
-    right: 10px; /* 10px from the right of the modal content */
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
     color: #aaa;
     cursor: pointer;
-    font-size: 28px; /* Adjust size as needed */
+    font-size: 28px; 
 }
   
 
   #saveMovie {
-    background-color: #007bff; /* Bootstrap primary blue */
+    background-color: #007bff; 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -86,7 +86,7 @@
     cursor: pointer;
 }
 #saveMovie:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
 }
 
     .close:hover,
@@ -96,30 +96,24 @@
         text-decoration: none;
     }
 
-    /* #recommendations div {
-        margin: 5px;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-    } */
-
     img {
-        max-width: 100%; /* Ensure images are not larger than their container */
-        height: auto; /* Maintain aspect ratio */
+        max-width: 100%; 
+        height: auto; 
     }
     
 
 @media (max-width: 768px) {
     #recommendations {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 480px) {
     #recommendations {
-        grid-template-columns: 1fr; /* Single column on very small screens */
+        grid-template-columns: 1fr; 
     }
 }
-        /* Include previous styles here */
+        
         #recommendations {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -228,7 +222,7 @@ function saveMovieToDatabase() {
     const movieTitle = document.getElementById('modalTitle').textContent;
     const movieDescription = document.getElementById('modalDescription').textContent;
     const moviePoster = document.getElementById('modalPoster').src;
-    const movieRating = document.getElementById('modalScore').textContent.split(" ")[1]; // Assuming the textContent is "Rating: X.Y"
+    const movieRating = document.getElementById('modalScore').textContent.split(" ")[1]; 
 
     console.log("Title: ", movieTitle);
     console.log("Description: ", movieDescription);
@@ -252,7 +246,7 @@ function saveMovieToDatabase() {
         if (data.status === 'success') {
             alert('Movie saved!');
         } else if (data.status === 'error') {
-            alert(data.message); // Display the error message from PHP
+            alert(data.message); // Display the error 
         }
     })
     .catch((error) => {
@@ -310,35 +304,6 @@ function displayMovies(movies) {
 }
 
 
-function animateWave1(wave, duration) {
-
-    function animate() {
-    
-        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '1000px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
-
-function animateWave2(wave, duration) {
-
-    function animate() {
-
-        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '0px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
 const navButtons = document.getElementsByClassName('nav-button');
 const popupMenus = document.getElementsByClassName('popup-menu');
 const menu = document.querySelector('#mobile-menu');
@@ -354,8 +319,6 @@ mobileMenu.style.padding = "0px";
 for (let i = 0; i < popupMenus.length; i++) {
     popupMenus[i].style.display = "none";
 }
-
-
 
 menu.addEventListener("click", function() {
     menu.classList.toggle("is-active");
