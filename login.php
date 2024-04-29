@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-$errorMessage = ''; // Initialize error message variable
+$errorMessage = '';
 
 if (isset($_POST['submit'])) {
     // Connection settings
-    $host = 'localhost'; // Adjust as necessary
-    $dbname = 'db3s875grjp4uu'; // Your database name
-    $username = 'uhnaasmnqb94o'; // Your database username
-    $password = 'Jad20032813'; // Your database password
+    $host = 'localhost'; 
+    $dbname = 'db3s875grjp4uu'; 
+    $username = 'uhnaasmnqb94o'; 
+    $password = 'Jad20032813'; 
 
     try {
         // Establishing the database connection
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             if (password_verify($_POST['password'], $user['Password'])) {
                 // Correct password, login successful
                 $_SESSION['username'] = $user['Username'];
-                $_SESSION['userID'] = $user['UserID']; // Store user ID in session for later use
+                $_SESSION['userID'] = $user['UserID']; // Store user ID
                 header("Location: profile.php");
                 exit;
             } else {
@@ -59,59 +59,59 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="styles.css"> 
     <style> 
         .form-container {
-    width: 80%; /* Set the width of the container */
-    max-width: 360px; /* Set the maximum width of the container */
-    position: absolute; /* Position the container */
-    top: 50%; /* Move the container 50% down from the top */
-    left: 50%; /* Move the container 50% from the left */
-    transform: translate(-50%, -50%); /* Center the container both horizontally and vertically */
-    background-color: #595959; /* Set background color */
-    padding: 24px; /* Add padding for better visual */
-    border-radius: 12px; /* Add rounded edges */
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Add box shadow */
-}
+            width: 80%; 
+            max-width: 360px; 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background-color: #595959; 
+            padding: 24px; 
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
 
 form {
-    color: white; /* Set text color to white */
-    font-size: 1.44em; /* Increase text size by 20% */
+    color: white; 
+    font-size: 1.44em;
 }
 
 form label {
-    display: block; /* Display labels as block elements to make them appear on different lines */
-    margin-bottom: 6px; /* Add some space between labels and input fields */
+    display: block; 
+    margin-bottom: 6px; 
 }
 
 form input {
-    width: 100%; /* Make input fields fill the width of their container */
-    padding: 6px; /* Add padding for better visual */
-    margin-bottom: 12px; /* Add some space between input fields */
+    width: 100%; 
+    padding: 6px; 
+    margin-bottom: 12px; 
 }
 
 form button {
-    width: 100%; /* Make button fill the width of its container */
-    padding: 12px; /* Add padding for better visual */
-    margin-top: 12px; /* Add some space between button and input fields */
+    width: 100%; 
+    padding: 12px; 
+    margin-top: 12px;
 }
 
 /* Media query for screens up to 600px */
 @media (max-width: 600px) {
     .form-container {
-        width: 90%; /* Adjust the width for smaller screens */
-        max-width: 300px; /* Adjust maximum width for smaller screens */
+        width: 90%; 
+        max-width: 300px; 
     }
 
     form {
-        font-size: 1.68em; /* Increase text size by 20% for smaller screens */
+        font-size: 1.68em; 
     }
 
     form input {
-        padding: 7px; /* Adjust padding for smaller screens */
-        margin-bottom: 14px; /* Adjust margin for smaller screens */
+        padding: 7px; 
+        margin-bottom: 14px; 
     }
 
     form button {
-        padding: 14px; /* Adjust padding for smaller screens */
-        margin-top: 14px; /* Adjust margin for smaller screens */
+        padding: 14px; 
+        margin-top: 14px; 
     }
 }
 
