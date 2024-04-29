@@ -16,7 +16,20 @@
             padding: 24px; /* Add padding for better visual */
             border-radius: 12px; /* Add rounded edges */
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            z-index: 1; /* Ensure form appears above footer */
         }
+
+        .footer {
+            position: fixed; /* Set the position of the footer */
+            bottom: 0; /* Position it at the bottom of the viewport */
+            width: 100%; /* Make it span the entire width */
+            background-color: #333; /* Set background color */
+            color: white; /* Set text color */
+            padding: 10px 0; /* Add padding */
+            text-align: center; /* Center the text */
+            z-index: 0; /* Ensure footer appears below form */
+        }
+
 
         form {
             color: white; /* Set text color to white */
@@ -106,7 +119,9 @@
         </form>
     </div>
 
-    <footer>
+    
+</body>
+<footer>
 
         <ul class="social-links">
              <li>
@@ -136,6 +151,5 @@
         </ul>
         
      </footer>
-</body>
 </html>
 
