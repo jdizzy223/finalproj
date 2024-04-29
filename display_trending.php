@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Movie Recommendations</title>
-    <meta name="viewport" content= "width=device-width, initial-scale=1">
+    <title>Trending Movies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css"> 
     <style>
-    body, html {
+        body, html {
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif; /* Ensures text is legible */
@@ -25,7 +25,7 @@
         border: 1px solid #ccc;
     }
 
-    button{
+    button {
         padding: 10px 20px;
         font-size: 16px; /* Larger font size for better readability */
     }
@@ -96,11 +96,7 @@
         text-decoration: none;
     }
 
-    /* #recommendations div {
-        margin: 5px;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-    } */
+  
 
     img {
         max-width: 100%; /* Ensure images are not larger than their container */
@@ -146,14 +142,10 @@
             margin-top: 10px;
             text-align: center;
         }
-
-
-</style>
-</head>
+    </style>
 </head>
 <body>
-<body>
-<nav class="navbar">
+    <nav class="navbar">
 
         <div class="navbar-container">
 
@@ -185,7 +177,7 @@
                     <ul id="menu2" class="popup-menu">
                         <div class="popup-menu-container">
                             <li class="navbar-link"> <a href="/final/trending.php"> Movies </a> </li>
-                            <li class="navbar-link"> <a href="/final//trending.php">TV</a> </li>
+                            <li class="navbar-link"> <a href="/final/trending.php">TV</a> </li>
                         </div>
                     </ul>
 
@@ -204,20 +196,15 @@
             <li class="mobile-link"> <a href="/index.php"> Recommendations </a> </li>
             <li class="mobile-link"> <a href="/trending.php"> Trending Movies  </a> </li>
             <li class="mobile-link"> <a href="/trending.php"> Trending TV </a> </li>
-            <li class="mobile-link"> <a href="/profile.php"> Profile </a> </li>
+            <li class="mobile-link"> <a href="/display_movies.php"> Profile </a> </li>
 
 
         </ul>
     </div>
-
-    <form id="movieForm">
-        <input type="text" id="movieName" placeholder="Enter Movie Name">
-        <br></br>
-        <button type="submit">Get Recommendations</button>
-    </form>
+</div>    
+    
     <div id="recommendations"></div>
-    <button id="showMore" style="display:none;">Show More</button>
-
+    
     <div id="movieModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -229,25 +216,9 @@
         </div>
     </div>
 
-    
-
-    <div id="authModal" class="modal">
-    <div class="modal-content">
-        <span class="closeAuth">&times;</span>
-        <form id="authForm">
-            <h2>Sign Up / Log In</h2>
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-</div>
-
     <script>
 
-
-
-//
+    var on = false;
 //code for saving to the database 
 function saveMovieToDatabase() {
     const movieTitle = document.getElementById('modalTitle').textContent;
@@ -286,54 +257,22 @@ function saveMovieToDatabase() {
 }
 
 
-document.getElementById('movieForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const movieName = document.getElementById('movieName').value;
-    fetch(`search_movies.php?query=${encodeURIComponent(movieName)}`)
-        .then(response => response.json())
-        .then(data => {
-            allRecommendations = data;
-            currentIndex = 0;
-            document.getElementById('recommendations').innerHTML = '';  // Clear previous results
-            displayRecommendations();
-        })
-        .catch(error => console.error('Fetch Error:', error));
-});
 
-
-//
-function displayRecommendations() {
-    const container = document.getElementById('recommendations');
-    const nextIndex = currentIndex + 5;
-    for (let i = currentIndex; i < nextIndex && i < allRecommendations.length; i++) {
-        const movie = allRecommendations[i];
-        const div = document.createElement('div');
-        div.className = 'movie-item';
-        div.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width:100px;"><h3>${movie.title} (${movie.vote_average})</h3>`;
-        div.addEventListener('click', () => openModal(movie));
-        container.appendChild(div);
-    }
-    currentIndex = nextIndex;
-
-    // Update the visibility of the "Show More" button
-    updateShowMoreVisibility();
-}
-
-function updateShowMoreVisibility() {
-    document.getElementById('showMore').style.display = currentIndex < allRecommendations.length ? 'block' : 'none';
-}
-
-document.getElementById('showMore').addEventListener('click', displayRecommendations);
 
 
 function openModal(movie) {
     const modal = document.getElementById('movieModal');
+    if (!modal) {
+        console.error('Modal element not found');
+        return;
+    }
     document.getElementById('modalPoster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     document.getElementById('modalTitle').textContent = movie.title;
     document.getElementById('modalDescription').textContent = movie.overview;
     document.getElementById('modalScore').textContent = `Rating: ${movie.vote_average}`;
     modal.style.display = "block";
 }
+
 
 document.querySelector('.close').addEventListener('click', function() {
     document.getElementById('movieModal').style.display = "none";
@@ -344,16 +283,29 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+
 }
 
-const navButtons = document.getElementsByClassName('nav-button');
-const popupMenus = document.getElementsByClassName('popup-menu');
-const menu = document.querySelector('#mobile-menu');
-const mobileMenu = document.querySelector('#popup-nav-mobile');
-const mobileLinks = document.querySelector('.mobile-list');
+window.onload = function() {
+            fetch('trending.php')
+            .then(response => response.json())
+            .then(data => displayMovies(data.results))
+            .catch(error => console.error('Error loading trending movies:', error));
+};
 
-
-
+function displayMovies(movies) {
+    const container = document.getElementById('recommendations');
+    movies.forEach(movie => {
+        const div = document.createElement('div');
+        div.className = 'movie-item';
+        div.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+            <h3>${movie.title} (${movie.vote_average})</h3>
+        `;
+        div.addEventListener('click', () => openModal(movie));  // Make sure this line is working
+        container.appendChild(div);
+    });
+}
 function animateWave1(wave, duration) {
 
     function animate() {
@@ -383,8 +335,13 @@ function animateWave2(wave, duration) {
 
     animate();
 }
+const navButtons = document.getElementsByClassName('nav-button');
+const popupMenus = document.getElementsByClassName('popup-menu');
+const menu = document.querySelector('#mobile-menu');
+const mobileMenu = document.querySelector('#popup-nav-mobile');
+const mobileLinks = document.querySelector('.mobile-list');
 
-var on = false;
+
 
 mobileMenu.style.height = "0px";
 mobileMenu.style.padding = "0px";
@@ -457,6 +414,6 @@ function resetBackground(event) {
 }
     
 
-</script>
+    </script>
 </body>
 </html>
