@@ -89,7 +89,7 @@ body {
 }
 
 .navbar-link:hover {
-    color: #7A7A7A;
+    color: #3e3e3e;
     transition: all 0.3s ease;
 }
 
@@ -110,15 +110,15 @@ body {
 
 .nav-button:hover {
     transition: all 0.3s ease-in-out;
-    background-color: #969E7D;
-    border-color: #969E7D;
+    background-color: #3e3e3e;
+    border-color: #3e3e3e;
 }
 
 .popup-menu {
 
     display: none;
     position: absolute;
-    background-color: #969E7D;
+    background-color: #3e3e3e;
     width:240px;
     overflow: scroll;
     padding: 10px;
@@ -248,7 +248,7 @@ footer .menu li a {
 
 footer .menu li a:hover {
     opacity: 1;
-    color: #969E7D;
+    color: #3e3e3e;
 }
 
 footer .wave {
@@ -394,10 +394,10 @@ footer .wave#wave4 {
 }
 
 .mobile-link:hover {
-    color: #969E7D;
-    background: #969E7D;
+    color: #3e3e3e;
+    background: #3e3e3e;
     border-radius: 4px;
-    border: 2px solid #969E7D;
+    border: 2px solid #3e3e3e;
 }
 
 
