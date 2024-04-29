@@ -63,5 +63,13 @@ if (isset($_POST['submit'])) {
         <input type="password" id="password" name="password" required>
         <button type="submit" name="submit">Login / Register</button>
     </form>
+    <div class="error-container">
+        <?php
+            if (isset($_POST['submit'])) {
+                // If the form was submitted and there's an error, display the message
+                echo "<p>Invalid username or password!</p>";
+            }
+        ?>
+    </div>
 </body>
 </html>
