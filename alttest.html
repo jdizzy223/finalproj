@@ -82,7 +82,6 @@
         height: 60px;
         font-size: 24px;
     }
-
     #showMore {
         display: block;
         margin: 0 auto; 
@@ -167,6 +166,8 @@
         }
 
 
+
+
 </style>
 </head>
 </head>
@@ -229,11 +230,15 @@
         </ul>
     </div>
 
+    
+
     <form id="movieForm">
         <input type="text" id="movieName" placeholder="Enter Movie Name">
         <br></br>
         <button type="submit">Get Recommendations</button>
     </form>
+
+   
     <div id="recommendations">
         <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
     <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
@@ -242,7 +247,9 @@
     <div class="movie-item"><img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" style="width:100px;"><h3>Inception (8.367)</h3></div>
     
     </div>
-    <button id="showMore">Show More</button>
+    <button id="showMore" style="display:block;">Show More</button>
+
+    
 
     <div id="movieModal" class="modal">
         <div class="modal-content">
@@ -268,6 +275,62 @@
         </form>
     </div>
 </div>
+
+
+<!-- <footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>About Us</h4>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Information</h4>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Us</h4>
+            <a href="#">Twitter</a> | <a href="#">Facebook</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 MovieSite | Designed by YourName
+    </div>
+</footer> -->
+
+
+<footer>
+
+    <ul class="social-links">
+         <li>
+             <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+         </li>
+         <li>
+             <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+         </li>
+         <li>
+             <a href="/index.html"> <img src="https://justind.sgedu.site/final/images/logo.webp" id="img-link"></img></a>
+         </li>
+         <li>
+             <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+         </li>
+         <li>
+             <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+         </li>
+    </ul>
+
+    <ul class="menu">
+         <li>
+            <a href="/index.php">Recommendations</a>
+            <a href="/display_trending.php">Trending Movies</a>
+            <a href="/display_trendingtv.php">Trending TV</a>
+            <a href="/profile.php">Profile</a>
+         </li>
+    </ul>
+    
+
+ </footer>
+
+ 
 
     <script>
 
@@ -457,4 +520,3 @@ function resetBackground(event) {
 </script>
 </body>
 </html>
-
