@@ -3,6 +3,49 @@
     <title>Movie Recommendations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css"> 
+    <style>
+
+        #logoutButton {
+            display: block;
+            padding: 12px 24px; /* Add padding to increase button size */
+            font-size: 1.2em; /* Increase font size */
+            background-color: #ef4e4e; /* Add background color */
+            color: white; /* Set text color to white */
+            border: none; /* Remove border */
+            border-radius: 6px; /* Add border radius */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            margin: 0 auto; /* Center the button horizontally */
+            text-align: center; /* Center the text */
+        }
+
+        #logoutButton:hover {
+            background-color: #c13e3e; /* Darker background color on hover */
+        }
+
+        .profileModal {
+            width: 300px; /* Set the width of each modal */
+            margin: 20px; /* Add margin to create space between modals */
+            padding: 10px; /* Add padding for better visual */
+            background-color: #f9f9f9; /* Set background color */
+            border-radius: 8px; /* Add rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+            display: inline-block; /* Display modals in a row */
+            vertical-align: top; /* Align modals to the top of the container */
+        }
+
+        .profileModal h3 {
+            margin-top: 0; /* Remove top margin of heading */
+        }
+
+        .profileModal p, .profileModal img, .profileModal p {
+            margin: 10px 0; /* Add margin to paragraphs, images, and ratings */
+        }
+
+        .profileModal img {
+            max-width: 100%; /* Ensure images don't exceed modal width */
+        }
+
+    </style>
 
 </head><body>
 <nav class="navbar">
@@ -65,63 +108,86 @@
 
 
 
-<h1>Welcome, justindeberry1@gmail.com</h1><div><h3>John Wick</h3><p>Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.</p><img src="https://image.tmdb.org/t/p/w500/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg" style="width: 200px;"><p>Rating: 7.4</p></div>
-<div><h3>Zodiac</h3><p>A cartoonist teams up with an ace reporter and a law enforcement officer to track down an elusive serial killer.</p><img src="https://image.tmdb.org/t/p/w500/6YmeO4pB7XTh8P8F960O1uA14JO.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
-<div><h3>How to Train Your Dragon 2</h3><p>Five years have passed since Hiccup and Toothless united the dragons and Vikings of Berk. Now, they spend their time charting unmapped territories. During one of their adventures, the pair discover a secret cave that houses hundreds of wild dragons -- and a mysterious dragon rider who turns out to be Hiccup's mother, Valka. Hiccup and Toothless then find themselves at the center of a battle to protect Berk from a power-hungry warrior named Drago.</p><img src="https://image.tmdb.org/t/p/w500/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg" style="width: 200px;"><p>Rating: 7.7</p></div>
-<div><h3>Incredibles 2</h3><p>Elastigirl springs into action to save the day, while Mr. Incredible faces his greatest challenge yet – taking care of the problems of his three children.</p><img src="https://image.tmdb.org/t/p/w500/9lFKBtaVIhP7E2Pk0IY1CwTKTMZ.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
-<div><h3>Incredibles 2</h3><p>Elastigirl springs into action to save the day, while Mr. Incredible faces his greatest challenge yet – taking care of the problems of his three children.</p><img src="https://image.tmdb.org/t/p/w500/9lFKBtaVIhP7E2Pk0IY1CwTKTMZ.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
-<div><h3>Finding Nemo</h3><p>Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.</p><img src="https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" style="width: 200px;"><p>Rating: 7.8</p></div>
-<div><h3>Finding Nemo</h3><p>Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.</p><img src="https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" style="width: 200px;"><p>Rating: 7.8</p></div>
-<div><h3>Towards Bruce Lee's Tomb</h3><p>A pathologically enthusiastic couple, with a weak spot for wine, decides to fly to Seattle to realize their dreams: she dreams of strengthening her leadership abilities in an exclusive corporate coaching seminar, Body Language Empowerment in One Week, while he dreams of getting as close as humanly possible to the tomb of the greatest fighter of all times. Upon arrival in Seattle, a sagacious mobster teaches them that it takes more than just a map to find Bruce's tomb, and something more than just a body to master the art of interpersonal communication. Will their relationship survive the mobster's grueling training? Will they be able to channel their enthusiasm towards a common dream? Seattle is a puzzle: will they find a frame pretty enough to hang it on the wall when it's all over?</p><img src="https://image.tmdb.org/t/p/w500/9WOlNubJAtx869IhTI4HXNcoXT9.jpg" style="width: 200px;"><p>Rating: 6.8</p></div><div><h3>14 Days, 12 Nights</h3><p>Isabelle Brodeur embarks on a journey to Vietnam, her adopted daughter’s birthplace. Throughout this stunningly beautiful journey, Isabelle discovers her daughter’s country through the eyes of the woman who brought her into this word.</p><img src="https://image.tmdb.org/t/p/w500/kiAao6UF3h2eFelRZuWlvUjbg3G.jpg" style="width: 200px;"><p>Rating: 6.3</p></div>
-<div><h3>The Incredibles</h3><p>Bob Parr has given up his superhero days to log in time as an insurance adjuster and raise his three children with his formerly heroic wife in suburbia. But when he receives a mysterious assignment, it's time to get back into costume.</p><img src="https://image.tmdb.org/t/p/w500/2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg" style="width: 200px;"><p>Rating: 7.7</p></div>
-<div><h3>Zootopia</h3><p>Determined to prove herself, Officer Judy Hopps, the first bunny on Zootopia's police force, jumps at the chance to crack her first case - even if it means partnering with scam-artist fox Nick Wilde to solve the mystery.</p><img src="https://image.tmdb.org/t/p/w500/hlK0e0wAQ3VLuJcsfIYPvb4JVud.jpg" style="width: 200px;"><p>Rating: 7.7</p></div>
-<div><h3>The Book of Life</h3><p>The journey of Manolo, a young man who is torn between fulfilling the expectations of his family and following his heart. Before choosing which path to follow, he embarks on an incredible adventure that spans three fantastical worlds where he must face his greatest fears.</p><img src="https://image.tmdb.org/t/p/w500/aotTZos5KswgCryEzx2rlOjFsm1.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
-<div><h3>The Lion King</h3><p>A young lion prince is cast out of his pride by his cruel uncle, who claims he killed his father. While the uncle rules with an iron paw, the prince grows up beyond the Savannah, living by a philosophy: No worries for the rest of your days. But when his past comes to haunt him, the young prince must decide his fate: Will he remain an outcast or face his demons and become what he needs to be?</p><img src="https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg" style="width: 200px;"><p>Rating: 8.3</p></div>
-<div><h3>Shōgun</h3><p>In Japan in the year 1600, at the dawn of a century-defining civil war, Lord Yoshii Toranaga is fighting for his life as his enemies on the Council of Regents unite against him, when a mysterious European ship is found marooned in a nearby fishing village.</p><img src="https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg" style="width: 200px;"><p>Rating: 8.6</p></div>
+<h1>Welcome, justindeberry1@gmail.com</h1>
+<div class="profileModal">
+    <h3>John Wick</h3>
+    <p class="description" style="display: none;"> Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.</p>
+    <img src="https://image.tmdb.org/t/p/w500/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg" style="width: 200px;">
+    <p>Rating: 7.4</p>
+    <button class="descriptionButton">Show Description</button>
+</div>
+<div class="profileModal"><h3>Zodiac</h3><p>A cartoonist teams up with an ace reporter and a law enforcement officer to track down an elusive serial killer.</p><img src="https://image.tmdb.org/t/p/w500/6YmeO4pB7XTh8P8F960O1uA14JO.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
+<div class="profileModal"><h3>How to Train Your Dragon 2</h3><p>Five years have passed since Hiccup and Toothless united the dragons and Vikings of Berk. Now, they spend their time charting unmapped territories. During one of their adventures, the pair discover a secret cave that houses hundreds of wild dragons -- and a mysterious dragon rider who turns out to be Hiccup's mother, Valka. Hiccup and Toothless then find themselves at the center of a battle to protect Berk from a power-hungry warrior named Drago.</p><img src="https://image.tmdb.org/t/p/w500/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg" style="width: 200px;"><p>Rating: 7.7</p></div>
+<div class="profileModal"><h3>Incredibles 2</h3><p>Elastigirl springs into action to save the day, while Mr. Incredible faces his greatest challenge yet – taking care of the problems of his three children.</p><img src="https://image.tmdb.org/t/p/w500/9lFKBtaVIhP7E2Pk0IY1CwTKTMZ.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
+<div class="profileModal"><h3>Incredibles 2</h3><p>Elastigirl springs into action to save the day, while Mr. Incredible faces his greatest challenge yet – taking care of the problems of his three children.</p><img src="https://image.tmdb.org/t/p/w500/9lFKBtaVIhP7E2Pk0IY1CwTKTMZ.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
+<div class="profileModal"><h3>Finding Nemo</h3><p>Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.</p><img src="https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" style="width: 200px;"><p>Rating: 7.8</p></div>
+<div class="profileModal"><h3>Finding Nemo</h3><p>Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.</p><img src="https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" style="width: 200px;"><p>Rating: 7.8</p></div>
+<div class="profileModal"><h3>Towards Bruce Lee's Tomb</h3><p>A pathologically enthusiastic couple, with a weak spot for wine, decides to fly to Seattle to realize their dreams: she dreams of strengthening her leadership abilities in an exclusive corporate coaching seminar, Body Language Empowerment in One Week, while he dreams of getting as close as humanly possible to the tomb of the greatest fighter of all times. Upon arrival in Seattle, a sagacious mobster teaches them that it takes more than just a map to find Bruce's tomb, and something more than just a body to master the art of interpersonal communication. Will their relationship survive the mobster's grueling training? Will they be able to channel their enthusiasm towards a common dream? Seattle is a puzzle: will they find a frame pretty enough to hang it on the wall when it's all over?</p><img src="https://image.tmdb.org/t/p/w500/9WOlNubJAtx869IhTI4HXNcoXT9.jpg" style="width: 200px;"><p>Rating: 6.8</p></div>
+<div class="profileModal"><h3>14 Days, 12 Nights</h3><p>Isabelle Brodeur embarks on a journey to Vietnam, her adopted daughter’s birthplace. Throughout this stunningly beautiful journey, Isabelle discovers her daughter’s country through the eyes of the woman who brought her into this word.</p><img src="https://image.tmdb.org/t/p/w500/kiAao6UF3h2eFelRZuWlvUjbg3G.jpg" style="width: 200px;"><p>Rating: 6.3</p></div>
+<div class="profileModal"><h3>The Incredibles</h3><p>Bob Parr has given up his superhero days to log in time as an insurance adjuster and raise his three children with his formerly heroic wife in suburbia. But when he receives a mysterious assignment, it's time to get back into costume.</p><img src="https://image.tmdb.org/t/p/w500/2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg" style="width: 200px;"><p>Rating: 7.7</p></div>
+<div class="profileModal"><h3>Zootopia</h3><p>Determined to prove herself, Officer Judy Hopps, the first bunny on Zootopia's police force, jumps at the chance to crack her first case - even if it means partnering with scam-artist fox Nick Wilde to solve the mystery.</p><img src="https://image.tmdb.org/t/p/w500/hlK0e0wAQ3VLuJcsfIYPvb4JVud.jpg" style="width: 200px;"><p>Rating: 7.7</p></div>
+<div class="profileModal"><h3>The Book of Life</h3><p>The journey of Manolo, a young man who is torn between fulfilling the expectations of his family and following his heart. Before choosing which path to follow, he embarks on an incredible adventure that spans three fantastical worlds where he must face his greatest fears.</p><img src="https://image.tmdb.org/t/p/w500/aotTZos5KswgCryEzx2rlOjFsm1.jpg" style="width: 200px;"><p>Rating: 7.5</p></div>
+<div class="profileModal"><h3>The Lion King</h3><p>A young lion prince is cast out of his pride by his cruel uncle, who claims he killed his father. While the uncle rules with an iron paw, the prince grows up beyond the Savannah, living by a philosophy: No worries for the rest of your days. But when his past comes to haunt him, the young prince must decide his fate: Will he remain an outcast or face his demons and become what he needs to be?</p><img src="https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg" style="width: 200px;"><p>Rating: 8.3</p></div>
+<div class="profileModal"><h3>Shōgun</h3><p>In Japan in the year 1600, at the dawn of a century-defining civil war, Lord Yoshii Toranaga is fighting for his life as his enemies on the Council of Regents unite against him, when a mysterious European ship is found marooned in a nearby fishing village.</p><img src="https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg" style="width: 200px;"><p>Rating: 8.6</p></div>
 
 
+<button id="logoutButton" style="display: block;">Logout</button>
+<br>
 
-<a href="logout.php">Logout</a>
+<footer>
+    <ul class="social-links">
+        <li>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+            <a href="/index.html"> <img src="https://justind.sgedu.site/final/images/logo.webp" id="img-link"></a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </li>
+    </ul>
 
+    <ul class="menu">
+        <li>
+            <a href="/index.php">Recommendations</a>
+            <a href="/display_trending.php">Trending Movies</a>
+            <a href="/display_trendingtv.php">Trending TV</a>
+            <a href="/profile.php">Profile</a>
+        </li>
+    </ul>
+</footer>
 
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const descriptionButtons = document.querySelectorAll('.descriptionButton');
+
+    descriptionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const description = this.parentNode.querySelector('.description');
+            if (description.style.display === 'none' || description.style.display === '') {
+                description.style.display = 'block';
+                button.textContent = 'Hide Description';
+            } else {
+                description.style.display = 'none';
+                button.textContent = 'Show Description';
+            }
+        });
+    });
+});
+
 const navButtons = document.getElementsByClassName('nav-button');
 const popupMenus = document.getElementsByClassName('popup-menu');
 const menu = document.querySelector('#mobile-menu');
 const mobileMenu = document.querySelector('#popup-nav-mobile');
 const mobileLinks = document.querySelector('.mobile-list');
 
-
-
-function animateWave1(wave, duration) {
-
-    function animate() {
-    
-        wave.animate({'background-position-x': '0px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '1000px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
-
-function animateWave2(wave, duration) {
-
-    function animate() {
-
-        wave.animate({'background-position-x': '1000px'}, duration * 1000, 'linear', function() {
-            
-            wave.css('background-position-x', '0px');
-            
-            animate();
-        });
-    }
-
-    animate();
-}
 
 var on = false;
 
@@ -133,7 +199,9 @@ for (let i = 0; i < popupMenus.length; i++) {
     popupMenus[i].style.display = "none";
 }
 
-
+document.getElementById("logoutButton").addEventListener("click", function() {
+    window.location.href = "logout.php";
+});
 
 menu.addEventListener("click", function() {
     menu.classList.toggle("is-active");
@@ -195,10 +263,7 @@ function resetBackground(event) {
     navButton.style.borderColor = "";
 }
     
-
 </script>
-
-
 
 </body>
 
